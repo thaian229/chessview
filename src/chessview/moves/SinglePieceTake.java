@@ -4,7 +4,7 @@ import chessview.*;
 import chessview.pieces.Piece;
 
 public class SinglePieceTake extends SinglePieceMove {
-	private Piece isTaken;
+	protected Piece isTaken;
 	
 	public SinglePieceTake(Piece piece, Piece isTaken, Position oldPosition, Position newPosition) {
 		super(piece,oldPosition,newPosition);
