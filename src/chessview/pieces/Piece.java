@@ -28,4 +28,8 @@ public interface Piece {
 	 */
 	public boolean isValidMove(Position oldPosition,
                                Position newPosition, Piece isTaken, Board board);
+
+//	public default boolean isEnPassantable() {
+//		return false;
+//	}
 }

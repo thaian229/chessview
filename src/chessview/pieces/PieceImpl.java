@@ -7,7 +7,6 @@ import chessview.*;
 
 public abstract class PieceImpl {
     protected boolean isWhite;
-    private boolean EnPassantable = false;
 
     public PieceImpl(boolean isWhite) {
         this.isWhite = isWhite;
@@ -15,14 +14,6 @@ public abstract class PieceImpl {
 
     public boolean isWhite() {
         return isWhite;
-    }
-
-    public void setEnPassantable(boolean enPassantable) {
-        EnPassantable = enPassantable;
-    }
-
-    public boolean isEnPassantable() {
-        return EnPassantable;
     }
 
     public boolean equals(Object o) {

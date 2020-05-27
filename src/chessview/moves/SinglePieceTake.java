@@ -12,7 +12,10 @@ public class SinglePieceTake extends SinglePieceMove {
 	}
 	
 	public boolean isValid(Board board) {
-		return piece.isValidMove(oldPosition, newPosition, isTaken, board);
+		Piece temp = board.pieceAt(oldPosition);
+		if(temp!=null)
+		return temp.isValidMove(oldPosition, newPosition, isTaken, board);
+		return false;
 	}
 	
 	public String toString() {

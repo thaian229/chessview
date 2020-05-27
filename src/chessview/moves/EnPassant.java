@@ -30,10 +30,11 @@ public class EnPassant extends SinglePieceTake {
 
         Piece d = board.pieceAt(newPosition);
 
+//        System.out.println(piece + " " + t + " " + ((Pawn) t).isEnPassantable() + "\n");
+
+
         if (piece instanceof Pawn && t instanceof Pawn && t.isWhite() != piece.isWhite() && d == null) {
-            if ((oldRow + dir) == newRow && (oldCol + 1) == newCol || (oldCol - 1) == newCol
-//                    && ((oldRow == 4) && (!piece.isWhite())) || ((oldRow == 5) && (piece.isWhite()))
-//                    && (s.isEnPassantable())
+            if ((oldRow + dir) == newRow && ((oldCol + 1) == newCol || (oldCol - 1) == newCol) && ((Pawn) t).isEnPassantable()
             ) {
                 return true;
             }

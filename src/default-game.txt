@@ -1,3 +1,2 @@
-a2-a4 b7-b6
-a4-a5 b6-b5
-a5xb6ep
+e2-e4 d7-d5
+Qd1-e2 d5xe4
