@@ -3,6 +3,11 @@ package chessview;
 import chessview.moves.Move;
 import chessview.pieces.*;
 
+/**
+ * <h1>Create Chess Board</h1>
+ * This class is used to create a chess board which is a 8*8 square
+ *
+ */
 public class Board {
 	private Piece[][] pieces; // this is the underlying data structure for a board.
 	
@@ -45,7 +50,7 @@ public class Board {
 	/**
 	 * Construct a board which is identical to another board.
 	 * 
-	 * @param board
+	 * //@param board
 	 */
 	public Board(Board board) {
 		this.pieces = new Piece[9][9];
@@ -60,8 +65,8 @@ public class Board {
 	 * Apply a given move to this board, returning true is successful, otherwise
 	 * false.
 	 * 
-	 * @param move
-	 * @return
+	 * //@param move
+	 * //@return
 	 */
 	public boolean apply(Move move) {		
 		boolean isWhite = move.isWhite();
@@ -88,8 +93,8 @@ public class Board {
 	/**
 	 * Move a piece from one position to another.
 	 * 
-	 * @param oldPosition
-	 * @param newPosition
+	 * //@param oldPosition
+	 * //@param newPosition
 	 */
 	public void move(Position oldPosition, Position newPosition) {		
 		Piece p = pieces[oldPosition.row()][oldPosition.column()];		
@@ -128,7 +133,7 @@ public class Board {
 	 * @param isWhite
 	 *            --- true means check whether white is in check; otherwise,
 	 *            check black.
-	 * @return
+	 * //@return
 	 */
 	public boolean isInCheck(boolean isWhite) {
 		King king = null; // opposition king
@@ -180,7 +185,7 @@ public class Board {
 	 * @param startPosition - start of diaganol
 	 * @param endPosition - end of diaganol
 	 * @param exceptions - the list of pieces allowed on the diaganol
-	 * @return
+	 * //@return
 	 */
 	public boolean clearDiaganolExcept(Position startPosition,
 			Position endPosition, Piece... exceptions) {			
@@ -218,7 +223,7 @@ public class Board {
 	 * @param startPosition - start of column
 	 * @param endPosition - end of column
 	 * @param exceptions - the list of pieces allowed on the column
-	 * @return
+	 * //@return
 	 */
 	public boolean clearColumnExcept(Position startPosition,
 			Position endPosition, Piece... exceptions) {			
@@ -254,7 +259,7 @@ public class Board {
 	 * @param startPosition - start of row
 	 * @param endPosition - end of row
 	 * @param exceptions - the list of pieces allowed on the row
-	 * @return
+	 * //@return
 	 */
 	public boolean clearRowExcept(Position startPosition,
 			Position endPosition, Piece... exceptions) {			

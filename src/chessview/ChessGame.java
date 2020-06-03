@@ -23,7 +23,7 @@ public class ChessGame {
 	 * Construct a ChessGame object from a given game sheet, where each round
 	 * occurs on a new line.
 	 * 
-	 * @param gameSheet
+	 * //@param gameSheet
 	 */
 	public ChessGame(Reader input) throws IOException {
 		rounds = new ArrayList<Round>();
@@ -53,7 +53,7 @@ public class ChessGame {
 	 * This method computes the list of boards which make up the game. If an
 	 * invalid move, or board is encountered then a RuntimeException is thrown.
 	 * 
-	 * @return
+	 * //@return
 	 */
 	public List<Board> boards() {
 		ArrayList<Board> boards = new ArrayList<Board>();
