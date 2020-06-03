@@ -3,6 +3,11 @@ package chessview;
 import chessview.moves.Move;
 import chessview.pieces.*;
 
+/**
+ * <h1>CLASS BOARD</h1>
+ * This class is used to create an 8*8 chess board with full functions
+ */
+
 public class Board {
 	private Piece[][] pieces; // this is the underlying data structure for a board.
 	
