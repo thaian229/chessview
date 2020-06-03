@@ -4,12 +4,15 @@ import chessview.moves.Move;
 import chessview.pieces.*;
 
 /**
- * <h1>CLASS BOARD</h1>
- * This class is used to create an 8*8 chess board with full functions
+ * <h1>BOARD</h1>
+ * This class is used to create a chess board
  */
 
 public class Board {
-	private Piece[][] pieces; // this is the underlying data structure for a board.
+	/**
+	 * this is the underlying data structure for a board.
+	 */
+	private Piece[][] pieces;
 	
 	/**
 	 * Construct an initial board.
@@ -50,7 +53,7 @@ public class Board {
 	/**
 	 * Construct a board which is identical to another board.
 	 * 
-	 * @param board
+	 * @param board - a chess board
 	 */
 	public Board(Board board) {
 		this.pieces = new Piece[9][9];
@@ -62,11 +65,11 @@ public class Board {
 	}
 
 	/**
-	 * Apply a given move to this board, returning true is successful, otherwise
-	 * false.
-	 * 
-	 * @param move
-	 * @return
+	 * Apply a given move to this board, check validity of the move
+	 *
+	 * @param move - a chess move
+	 *
+	 * @return  true is successful, otherwise false
 	 */
 	public boolean apply(Move move) {		
 		boolean isWhite = move.isWhite();
@@ -93,23 +96,39 @@ public class Board {
 	/**
 	 * Move a piece from one position to another.
 	 * 
-	 * @param oldPosition
-	 * @param newPosition
+	 * @param oldPosition - position of this piece before move.
+	 * @param newPosition - position of this piece after move.
 	 */
 	public void move(Position oldPosition, Position newPosition) {		
 		Piece p = pieces[oldPosition.row()][oldPosition.column()];		
 		pieces[newPosition.row()][newPosition.column()] = p;
 		pieces[oldPosition.row()][oldPosition.column()] = null;
 	}
+
+	/**
+	 * Set a piece at input position
+	 * @param pos - position of a piece
+	 * @param piece - chess piece
+	 */
 	
 	public void setPieceAt(Position pos, Piece piece) {
 		pieces[pos.row()][pos.column()] = piece;
 	}
-	
+
+	/**
+	 * Get a piece by position on board
+	 * @param pos - position of a piece
+	 * @return a piece at input position
+	 */
 	public Piece pieceAt(Position pos) {
 		return pieces[pos.row()][pos.column()];
 	}
-	
+
+	/**
+	 * Visualize board state in text
+	 *
+	 * @return state of chess board
+	 */
 	public String toString() {
 		String r = "";
 		for(int row=8;row!=0;row--) {
@@ -130,10 +149,10 @@ public class Board {
 	/**
 	 * This method determines whether or not one side is in check.
 	 * 
-	 * @param isWhite
-	 *            --- true means check whether white is in check; otherwise,
-	 *            check black.
-	 * @return
+	 * @param isWhite - true means check whether white is in check; otherwise,
+	 * check black.
+	 *
+	 * @return true if one side is in check, otherwise false
 	 */
 	public boolean isInCheck(boolean isWhite) {
 		King king = null; // opposition king
@@ -177,15 +196,15 @@ public class Board {
 	}
 	
 	/**
-	 * The following method checks whether the given diaganol is completely
+	 * The following method checks whether the given diagonal is completely
 	 * clear, except for a given set of pieces. Observe that this doesn't
-	 * guarantee a given diaganol move is valid, since this method does not
+	 * guarantee a given diagonal move is valid, since this method does not
 	 * ensure anything about the relative positions of the given pieces.
 	 * 
-	 * @param startPosition - start of diaganol
-	 * @param endPosition - end of diaganol
-	 * @param exceptions - the list of pieces allowed on the diaganol
-	 * @return
+	 * @param startPosition - start of diagonal
+	 * @param endPosition - end of diagonal
+	 * @param exceptions - the list of pieces allowed on the diagonal
+	 * @return true is clear, otherwise false
 	 */
 	public boolean clearDiaganolExcept(Position startPosition,
 			Position endPosition, Piece... exceptions) {			
@@ -223,7 +242,7 @@ public class Board {
 	 * @param startPosition - start of column
 	 * @param endPosition - end of column
 	 * @param exceptions - the list of pieces allowed on the column
-	 * @return
+	 * @return true if clear, otherwise false
 	 */
 	public boolean clearColumnExcept(Position startPosition,
 			Position endPosition, Piece... exceptions) {			
@@ -259,7 +278,7 @@ public class Board {
 	 * @param startPosition - start of row
 	 * @param endPosition - end of row
 	 * @param exceptions - the list of pieces allowed on the row
-	 * @return
+	 * @return true if clear, otherwise false
 	 */
 	public boolean clearRowExcept(Position startPosition,
 			Position endPosition, Piece... exceptions) {			
@@ -285,10 +304,19 @@ public class Board {
 		
 		return true;
 	}
-	
-	// Helper method for the clear?????Except methods above.
-	private static boolean contains(Piece p1, Piece... pieces) {		
-		for(Piece p2 : pieces) {						
+
+	/**
+	 * Check if a piece is in board
+	 *
+	 * this method is used to help 3 above methods
+	 *
+	 * @param p1 - a chess piece
+	 * @param pieces - chess board
+	 * @return true if piece is in board, otherwise false
+	 */
+
+	private static boolean contains(Piece p1, Piece... pieces) {
+		for(Piece p2 : pieces) {
 			if(p1 == p2) {									
 				return true;
 			}
