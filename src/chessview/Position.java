@@ -50,7 +50,7 @@ public final class Position {
 
 	/**
 	 * This method represents position as chess Notation
-	 * @return - a string with column and row (position)
+	 * @return a string with column and row (position)
 	 */
 	public String toString() {		
 		return ((char)('a'+(col-1))) + Integer.toString(row);		

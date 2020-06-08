@@ -9,7 +9,7 @@ import chessview.pieces.*;
 public class BoardCanvas extends Canvas {
 	private ArrayList<Board> boards;
 	private int index = 0;
-	private static final Color BLACK = new Color(90,48,158);
+	private static final Color BLACK = new Color(200,48,158);
 	private static final Color WHITE = new Color(210,205,185);
 	private Font font;
 	
