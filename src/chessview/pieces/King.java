@@ -2,9 +2,17 @@ package chessview.pieces;
 
 import chessview.*;
 
+/**
+ * <h1>Class King</h1>
+ * This class represents the piece King in chess board
+ */
 public class King extends PieceImpl implements Piece {
-
 	public boolean isCastleable = true;
+
+	/**
+	 * Construct King
+	 * @param isWhite - check color of piece
+	 */
 	public King(boolean isWhite) {
 		super(isWhite);
 	}
@@ -30,7 +38,11 @@ public class King extends PieceImpl implements Piece {
 		}
 		return false;
 	}
-	
+
+	/**
+	 * This method represents king piece as a character "K" or "k" depends on color of piece
+	 * @return "K" for white king, "k" for black one
+	 */
 	public String toString() {
 		if(isWhite) {
 			return "K";

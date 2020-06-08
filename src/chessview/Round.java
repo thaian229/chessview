@@ -3,11 +3,10 @@ package chessview;
 import chessview.moves.Move;
 
 /**
+ * <h1>Class Round</h1>
  * A round consists of a move by white, and will normally also have a move by
  * black. The latter may not happen in the case that White wins the game.
- * 
  * @author djp
- * 
  */
 public class Round {
 	private Move white;
@@ -26,15 +25,27 @@ public class Round {
 		this.white = white;
 		this.black = black;
 	}
-	
+
+	/**
+	 * Get the white move of this round
+	 * @return - white move
+	 */
 	public Move white() {
 		return white;
 	}
-	
+
+	/**
+	 * Get the black move of this round
+	 * @return - black move
+	 */
 	public Move black() {
 		return black;
 	}
-	
+
+	/**
+	 * This method represents a round with white move and black move respectively as String
+	 * @return - a String which represents a round
+	 */
 	public String toString() {
 		String r = white.toString();
 		if(black != null) {

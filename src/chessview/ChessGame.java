@@ -6,11 +6,10 @@ import chessview.moves.*;
 import chessview.pieces.*;
 
 /**
- * This class represents a game of chess, which is essentially just a list moves
+ * <h1>Class ChessGame</h1>
+ * This class represents a game of chess, which is essentially just a list moves.
  * that make up the game.
- * 
  * @author djp
- * 
  */
 public class ChessGame {
 	private ArrayList<Round> rounds;
@@ -18,12 +17,12 @@ public class ChessGame {
 	public ChessGame(String sheet) throws IOException {
 		this(new StringReader(sheet));
 	}
-	
+
 	/**
 	 * Construct a ChessGame object from a given game sheet, where each round
 	 * occurs on a new line.
-	 * 
-	 * //@param gameSheet
+	 *
+	 * @param input - given game
 	 */
 	public ChessGame(Reader input) throws IOException {
 		rounds = new ArrayList<Round>();
@@ -78,9 +77,9 @@ public class ChessGame {
 
 	/**
 	 * Construct a move object from a given string.
-	 * 
-	 * @param str
-	 * @return
+	 * @param str - given string
+	 * @param isWhite - color of chess piece
+	 * @return a move of chess piece
 	 */
 	private static Move moveFromString(String str, boolean isWhite) {
 		Piece piece;		
@@ -208,7 +207,12 @@ public class ChessGame {
 		
 		return move;
 	}
-	
+
+	/**
+	 * this method construct position from string
+	 * @param pos - given position
+	 * @return	position
+	 */
 	private static Position positionFromString(String pos) {
 		if(pos.length() != 2) {
 			throw new IllegalArgumentException("invalid position: " + pos);

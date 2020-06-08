@@ -2,11 +2,15 @@ package chessview.pieces;
 
 import chessview.*;
 
+/**
+ * <h1>Class Rook</h1>
+ * This class represents the piece rook in the chess board
+ */
 public class Rook extends PieceImpl implements Piece {
 	public Rook(boolean isWhite) {
 		super(isWhite);
 	}
-	
+
 	public boolean isValidMove(Position oldPosition, Position newPosition,
 			Piece isTaken, Board board) {
 		Piece p = board.pieceAt(oldPosition);
@@ -17,7 +21,11 @@ public class Rook extends PieceImpl implements Piece {
 				&& (board.clearColumnExcept(oldPosition, newPosition, p, t) || board
 						.clearRowExcept(oldPosition, newPosition, p, t));
 	}
-	
+
+	/**
+	 * This method represents rook piece as a character "R" or "r" depends on color of piece
+	 * @return "R" for white rook, "r" for black one
+	 */
 	public String toString() {
 		if(isWhite) {
 			return "R";

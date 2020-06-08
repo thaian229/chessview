@@ -4,9 +4,9 @@ import chessview.moves.Move;
 import chessview.pieces.*;
 
 /**
- * <h1>Create Chess Board</h1>
- * This class is used to create a chess board which is a 8*8 square
- *
+ * <h1>Class Board</h1>
+ * This class is used to create a chess board
+ * @author djp
  */
 public class Board {
 	private Piece[][] pieces; // this is the underlying data structure for a board.
@@ -50,7 +50,7 @@ public class Board {
 	/**
 	 * Construct a board which is identical to another board.
 	 * 
-	 * //@param board
+	 * @param board - chess board
 	 */
 	public Board(Board board) {
 		this.pieces = new Piece[9][9];
@@ -62,11 +62,11 @@ public class Board {
 	}
 
 	/**
-	 * Apply a given move to this board, returning true is successful, otherwise
-	 * false.
-	 * 
-	 * //@param move
-	 * //@return
+	 * Apply a given move to this board, check validity of the move
+	 *
+	 * @param move - a chess move
+	 *
+	 * @return  true is successful, otherwise false
 	 */
 	public boolean apply(Move move) {		
 		boolean isWhite = move.isWhite();
@@ -89,27 +89,42 @@ public class Board {
 			return false;			
 		}
 	}
-	
+
 	/**
 	 * Move a piece from one position to another.
-	 * 
-	 * //@param oldPosition
-	 * //@param newPosition
+	 *
+	 * @param oldPosition - position of this piece before move.
+	 * @param newPosition - position of this piece after move.
 	 */
 	public void move(Position oldPosition, Position newPosition) {		
 		Piece p = pieces[oldPosition.row()][oldPosition.column()];		
 		pieces[newPosition.row()][newPosition.column()] = p;
 		pieces[oldPosition.row()][oldPosition.column()] = null;
 	}
-	
+
+	/**
+	 * Set a piece at input position
+	 * @param pos - position of a piece
+	 * @param piece - chess piece
+	 */
 	public void setPieceAt(Position pos, Piece piece) {
 		pieces[pos.row()][pos.column()] = piece;
 	}
-	
+
+	/**
+	 * Get a piece by position on board
+	 * @param pos - position of a piece
+	 * @return a piece at input position
+	 */
 	public Piece pieceAt(Position pos) {
 		return pieces[pos.row()][pos.column()];
 	}
-	
+
+	/**
+	 * Visualize the board's state in text
+	 *
+	 * @return state of chess board.
+	 */
 	public String toString() {
 		String r = "";
 		for(int row=8;row!=0;row--) {
@@ -133,7 +148,7 @@ public class Board {
 	 * @param isWhite
 	 *            --- true means check whether white is in check; otherwise,
 	 *            check black.
-	 * //@return
+	 * @return true if one side is in check, otherwise false
 	 */
 	public boolean isInCheck(boolean isWhite) {
 		King king = null; // opposition king
@@ -185,7 +200,7 @@ public class Board {
 	 * @param startPosition - start of diaganol
 	 * @param endPosition - end of diaganol
 	 * @param exceptions - the list of pieces allowed on the diaganol
-	 * //@return
+	 * @return true is clear, otherwise false
 	 */
 	public boolean clearDiaganolExcept(Position startPosition,
 			Position endPosition, Piece... exceptions) {			
@@ -223,7 +238,7 @@ public class Board {
 	 * @param startPosition - start of column
 	 * @param endPosition - end of column
 	 * @param exceptions - the list of pieces allowed on the column
-	 * //@return
+	 * @return true if clear, otherwise false
 	 */
 	public boolean clearColumnExcept(Position startPosition,
 			Position endPosition, Piece... exceptions) {			
@@ -259,7 +274,7 @@ public class Board {
 	 * @param startPosition - start of row
 	 * @param endPosition - end of row
 	 * @param exceptions - the list of pieces allowed on the row
-	 * //@return
+	 * @return true if clear, otherwise false
 	 */
 	public boolean clearRowExcept(Position startPosition,
 			Position endPosition, Piece... exceptions) {			
@@ -285,8 +300,16 @@ public class Board {
 		
 		return true;
 	}
-	
-	// Helper method for the clear?????Except methods above.
+
+	/**
+	 * Check if a piece is in board
+	 *
+	 * this method is used to help 3 above methods
+	 *
+	 * @param p1 - a chess piece
+	 * @param pieces - exception list
+	 * @return true if piece is in list, otherwise false
+	 */
 	private static boolean contains(Piece p1, Piece... pieces) {		
 		for(Piece p2 : pieces) {						
 			if(p1 == p2) {									

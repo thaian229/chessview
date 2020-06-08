@@ -4,16 +4,25 @@ import chessview.*;
 import chessview.pieces.*;
 
 /**
- * This represents an "en passant move" --- http://en.wikipedia.org/wiki/En_passant.
+ * <h1>Class EnPassant</h1>
  *
- * @author djp
+ * This represents an "en_passant move" --- http://en.wikipedia.org/wiki/En_passant.
  */
 public class EnPassant extends SinglePieceTake {
 
+    /**
+     * Construct EnPassant move
+     * @param move - a move
+     */
     public EnPassant(SinglePieceMove move) {
         super(move.piece(), new Pawn(!move.piece().isWhite()), move.oldPosition(), move.newPosition());
     }
 
+    /**
+     * Check whether this move is valid or not.
+     * @param board - game board
+     * @return true if valid, otherwise false
+     */
     @Override
     public boolean isValid(Board board) {
         int dir = isWhite() ? 1 : -1;
@@ -42,6 +51,11 @@ public class EnPassant extends SinglePieceTake {
         return false;
     }
 
+    /**
+     * Update the board to reflect the board after the EnPassant move is played.
+     *
+     * @param board - game board
+     */
     public void apply(Board board) {
         super.apply(board);
         int oldRow = oldPosition.row();
@@ -49,6 +63,10 @@ public class EnPassant extends SinglePieceTake {
         board.setPieceAt(new Position(oldRow, newCol), null);
     }
 
+    /**
+     * This method represents EnPassant move as a string
+     * @return string describes an EnPassant move
+     */
     public String toString() {
         return super.toString() + "ep";
     }

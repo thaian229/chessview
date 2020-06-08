@@ -2,10 +2,18 @@ package chessview.pieces;
 
 import chessview.*;
 
+/**
+ * <h1>Class Pawn</h1>
+ * This class represents the piece Pawn in chess board
+ */
 public class Pawn extends PieceImpl implements Piece {
 
     private boolean isEnPassantable = false;
 
+    /**
+     * Construct Pawn
+     * @param isWhite - check color of piece
+     */
     public Pawn(boolean isWhite) {
         super(isWhite);
     }
@@ -58,10 +66,10 @@ public class Pawn extends PieceImpl implements Piece {
         return false;
     }
 
-    public void setEnPassant(Position oldPosition, Position newPosition,
-                             Board board) {
+//    public void setEnPassant(Position oldPosition, Position newPosition,
+//                             Board board) {
 //        System.out.println("Color\n" + isWhite() + "\nstatus\n" + isEnPassantable());
-        System.out.println("oldRow: " + oldPosition.row() + " oldCol: " + oldPosition.column() + " " + "newRow: " + newPosition.row() + " newCol: " + newPosition.column() + " " + isEnPassantable + "\n");
+//        System.out.println("oldRow: " + oldPosition.row() + " oldCol: " + oldPosition.column() + " " + "newRow: " + newPosition.row() + " newCol: " + newPosition.column() + " " + isEnPassantable + "\n");
 
 
 //        int dir = isWhite ? 1 : -1;
@@ -86,8 +94,12 @@ public class Pawn extends PieceImpl implements Piece {
 //                this.isEnPassantable = true;
 //            }
 //        }
-    }
+//    }
 
+    /**
+     * This method represents pawn piece as a character "P" or "p" depends on color of piece
+     * @return "P" for white pawn, "p" for black one
+     */
     public String toString() {
         if (isWhite) {
             return "P";

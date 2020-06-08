@@ -5,6 +5,11 @@ import java.io.*;
 
 import chessview.viewer.*;
 
+/**
+ * <h1>Class Main</h1>
+ * This is main class of the project
+ * @author djp
+ */
 public class Main {
     public static void main(String[] args) {
         String gameMatchPath = "";
@@ -23,6 +28,10 @@ public class Main {
         }
     }
 
+    /**
+     * This method print out the board by text
+     * @param game - board game
+     */
     public static void textView(ChessGame game) {
         try {
             List<Board> boards = game.boards();
