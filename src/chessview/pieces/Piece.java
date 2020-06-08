@@ -8,7 +8,7 @@ import chessview.*;
 public interface Piece {
 	/**
 	 * Determine whether this piece is white or black.
-	 * @return
+	 * //@return
 	 */
 	public boolean isWhite();
 
@@ -24,7 +24,7 @@ public interface Piece {
 	 *            --- piece being taken, or null if no piece taken.
 	 * @param board
 	 *            --- board on which the validity of this move is being checked.
-	 * @return
+	 * //@return
 	 */
 	public boolean isValidMove(Position oldPosition,
                                Position newPosition, Piece isTaken, Board board);
