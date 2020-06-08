@@ -15,22 +15,19 @@ public interface Move {
 	/**
 	 * Check whether this move is valid or not.
 	 * 
-	 * @param board
-	 * @return
+	 * @param board - game board
 	 */
 	public boolean isValid(Board board);
 
 	/**
 	 * Update the board to reflect the board after the move is played.
 	 * 
-	 * @param board
+	 * @param board - game board
 	 */
 	public void apply(Board board);
 	
 	/**
 	 * Is this move for white or black?
-	 * 
-	 * @return
 	 */
 	public boolean isWhite();
 }

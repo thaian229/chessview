@@ -4,7 +4,7 @@ import chessview.moves.Move;
 import chessview.pieces.*;
 
 /**
- * <h1>BOARD</h1>
+ * <h1>Class Board</h1>
  * This class is used to create a chess board
  */
 
@@ -149,8 +149,7 @@ public class Board {
 	/**
 	 * This method determines whether or not one side is in check.
 	 * 
-	 * @param isWhite - true means check whether white is in check; otherwise,
-	 * check black.
+	 * @param isWhite - check color of piece
 	 *
 	 * @return true if one side is in check, otherwise false
 	 */

@@ -1,10 +1,19 @@
 package chessview;
 
-import java.util.*;
-import java.io.*;
-import chessview.viewer.*;
+import chessview.viewer.BoardFrame;
 
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.List;
+
+/**
+ * <h1>Class Main</h1>
+ * This is main class of the project
+ */
 public class Main {
+	/**
+	 * This is main method
+	 */
 	public static void main(String[] args) {
 		String gameMatchPath = "";
 		try {
@@ -15,12 +24,17 @@ public class Main {
 			}
 			ChessGame game = new ChessGame(new FileReader(gameMatchPath));
 			new BoardFrame(game);
-			//textView(game);
+			textView(game);
 		} catch(IOException e) {			
 			System.err.println("Error loading file: " + gameMatchPath);
 			System.err.println(e.getMessage());			
 		}
 	}
+
+	/**
+	 * This method print out the board by text
+	 * @param game - board game
+	 */
 	
 	public static void textView(ChessGame game) {
 		try {			

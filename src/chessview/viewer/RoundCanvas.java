@@ -1,20 +1,30 @@
 package chessview.viewer;
 
-import java.awt.*;
-import java.util.*;
-import java.util.List;
-import javax.swing.*;
-import chessview.*;
-import chessview.moves.*;
-import chessview.pieces.*;
+import chessview.Board;
+import chessview.Round;
+import chessview.moves.Move;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
+/**
+ * <h1>Class RoundCanvas</h1>
+ * This class construct graphic for a rectangle to show total rounds of a game
+ */
 public class RoundCanvas extends Canvas {
 	private ArrayList<Round> rounds;
 	private ArrayList<Board> boards;
 	private int index = 0;
 	private static String[] preferredFonts = {"Arial","Times New Roman"};
 	private Font font;
-	
+
+	/**
+	 * Construct position, size of rectangle contains all rounds and size of characters in usage
+	 * @param rounds - list of rounds
+	 * @param boards - list of boards
+	 */
 	public RoundCanvas(List<Round> rounds, List<Board> boards) {
 		this.rounds = new ArrayList<Round>(rounds);
 		this.boards = new ArrayList<Board>(boards);
@@ -33,7 +43,10 @@ public class RoundCanvas extends Canvas {
 			}
 		}
 	}
-	
+	/**
+	 * Draw a white rectangle and set color for characters in usage
+	 * @param g - object of graphic class
+	 */
 	public void paint(Graphics g) {		
 		g.setColor(Color.WHITE);
 		g.fillRect(0,0,getWidth(),getHeight());		
@@ -49,7 +62,7 @@ public class RoundCanvas extends Canvas {
 			} else if((i*2) < index) {
 				g.setColor(Color.BLACK);
 			} else {
-				g.setColor(Color.LIGHT_GRAY);
+				g.setColor(Color.GREEN);
 			}
 			Move white = rounds.get(i).white();			
 			char[] chars = white.toString().toCharArray();			
@@ -66,7 +79,7 @@ public class RoundCanvas extends Canvas {
 			} else if(((i*2)+1) < index) {
 				g.setColor(Color.BLACK);
 			} else {
-				g.setColor(Color.LIGHT_GRAY);
+				g.setColor(Color.GREEN);
 			}
 			Move black = rounds.get(i).black();			
 			if(black != null) {
@@ -76,15 +89,22 @@ public class RoundCanvas extends Canvas {
 			}
 		}								
 	}
-	
 
+	/**
+	 * repaint round after forward move
+	 * @param amount - amount of move
+	 */
 	public void fwd(int amount) {
 		index = Math.min(boards.size()-1,index + amount);
-		repaint();		
+		repaint();
 	}
-	
+
+	/**
+	 * repaint round after backward move
+	 * @param amount - amount of move
+	 */
 	public void bwd(int amount) {
 		index = Math.max(0,index - amount);
-		repaint();		
-	}	
+		repaint();
+	}
 }

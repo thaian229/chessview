@@ -1,24 +1,35 @@
 package chessview.viewer;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.util.*;
-import java.util.List;
+import chessview.Board;
+import chessview.ChessGame;
+
 import javax.swing.*;
-import javax.swing.border.*;
-import chessview.*;
+import javax.swing.border.Border;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.List;
+
+/**
+ * <h1>Class BoardFrame</h1>
+ * This class create frame board which has buttons to show steps of the game
+ */
 
 public class BoardFrame extends JFrame implements ActionListener, KeyListener {
-	/**
-	 *
-	 */
+
 	private static final long serialVersionUID = 1L;
 	private JPanel bottomInnerPanel;
 	private JPanel leftInnerPanel;
 	private JPanel rightInnerPanel;
 	private BoardCanvas boardCanvas;
-	private RoundCanvas roundCanvas;	
-	
+	private RoundCanvas roundCanvas;
+
+	/**
+	 * Construct board frame
+	 * @param game - a given game
+	 */
 	public BoardFrame(ChessGame game) {
 		super("Chess View");
 
@@ -75,7 +86,11 @@ public class BoardFrame extends JFrame implements ActionListener, KeyListener {
 		pack();
 		setVisible(true);
 	}
-	
+
+	/**
+	 * Construct action when user click any button
+	 * @param e - event
+	 */
 	public void actionPerformed(ActionEvent e) {
 		// When a toolbar button or menu item is
 		// clicked on this function will be called
@@ -102,7 +117,11 @@ public class BoardFrame extends JFrame implements ActionListener, KeyListener {
 	}
 	
 	// METHODS REQUIRED FOR KEY LISTENER
-	
+
+	/**
+	 * Notice when user pressed a key
+	 * @param e - event
+	 */
 	public void keyPressed(KeyEvent e) {
 		int code = e.getKeyCode();
 		if(code == KeyEvent.VK_RIGHT || code == KeyEvent.VK_KP_RIGHT) {
@@ -119,10 +138,18 @@ public class BoardFrame extends JFrame implements ActionListener, KeyListener {
 			roundCanvas.bwd(90000);
 		}
 	}
-	
+
+	/**
+	 * Notice when user released a key
+	 * @param e - event
+	 */
 	public void keyReleased(KeyEvent e) {		
 	}
-	
+
+	/**
+	 * Notice when user typed a character
+	 * @param e - event
+	 */
 	public void keyTyped(KeyEvent e) {
 		
 	}

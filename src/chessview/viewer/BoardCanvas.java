@@ -1,20 +1,31 @@
 package chessview.viewer;
 
-import java.awt.*;
-import java.util.*;
-import java.util.List;
-import chessview.*;
+import chessview.Board;
+import chessview.Position;
 import chessview.pieces.*;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
+/**
+ * <h1>Class BoardCanvas</h1>
+ * This class constructs graphic for a chess board
+ */
 public class BoardCanvas extends Canvas {
 	private ArrayList<Board> boards;
 	private int index = 0;
-	private static final Color BLACK = new Color(90,48,158);
+	private static final Color BLACK = new Color(200,48,158);
 	private static final Color WHITE = new Color(210,205,185);
 	private Font font;
 	
 	private static String[] preferredFonts = {"Arial","Times New Roman"};
-	
+
+	/**
+	 * Construct position, size of the board and size of characters in usage
+	 * @param boards - a chess board
+	 */
 	public BoardCanvas(List<Board> boards) {
 		this.boards = new ArrayList<Board>(boards);
 		setBounds(0, 0, 400, 400);
@@ -32,7 +43,11 @@ public class BoardCanvas extends Canvas {
 			}
 		}
 	}
-	
+
+	/**
+	 * Draw a board with background, coordinate, pieces
+	 * @param g - object of graphic class
+	 */
 	public void paint(Graphics g) {		
 		int width = (getWidth()-4)/9;
 		int height = (getHeight()-4)/9;
@@ -40,12 +55,20 @@ public class BoardCanvas extends Canvas {
 			g.setFont(font);
 		}
 		g.setColor(Color.WHITE);
-		g.fillRect(0,0,getWidth(),getHeight());		
+		g.fillRect(0,0,getWidth(),getHeight());
 		drawBackground(g,width+2,2,width,height);
 		drawCoords(g,2,2,width,height);
 		drawPieces(g,width+2,2,width,height);
 	}
-	
+
+	/**
+	 * Draw rectangle contain pieces
+	 * @param g - object of graphic class
+	 * @param startx - start coordinate on axis x
+	 * @param starty - start coordinate on axis y
+	 * @param width - width of rectangle
+	 * @param height - height of rectangle
+	 */
 	private void drawPieces(Graphics g, int startx, int starty, int width, int height) {
 		for(int row=1;row<=8;++row) {
 			int ypos = starty + ((8-row)*height);
@@ -58,7 +81,16 @@ public class BoardCanvas extends Canvas {
 			}	
 		}
 	}
-	
+
+	/**
+	 * Draw a chess piece
+	 * @param p - a chess piece
+	 * @param g - object of graphic class
+	 * @param startx - start coordinate on axis x
+	 * @param starty - start coordinate on axis y
+	 * @param width - width of a piece
+	 * @param height - height of a piece
+	 */
 	private void drawPiece(Piece p, Graphics g, int startx, int starty, int width, int height) {
 		if(p.isWhite()) {
 			g.setColor(Color.WHITE);
@@ -141,9 +173,17 @@ public class BoardCanvas extends Canvas {
 			g.fillRect(startx, endy-(height/5), width, height/5);
 		} 
 	}
-	
+
+	/**
+	 * Draw coordinate
+	 * @param g - object of graphic class
+	 * @param startx - start coordinate on axis x
+	 * @param starty - start coordinate on axis y
+	 * @param width - width of a rectangle contains coordinate
+	 * @param height - height of a rectangle contains coordinate
+	 */
 	private void drawCoords(Graphics g, int startx, int starty, int width, int height) {
-		g.setColor(BLACK);		
+		g.setColor(WHITE);
 				 		
 		FontMetrics metrics = g.getFontMetrics();
 		
@@ -185,7 +225,15 @@ public class BoardCanvas extends Canvas {
 		g.drawChars(new char[]{'G'},0,1,startx+Goff+(width*7),starty);
 		g.drawChars(new char[]{'H'},0,1,startx+Hoff+(width*8),starty);		
 	}
-	
+
+	/**
+	 * Draw background
+	 * @param g - object of graphic class
+	 * @param startx - start coordinate on axis x
+	 * @param starty - start coordinate on axis y
+	 * @param width - width of each piece on board
+	 * @param height - height of each piece on board
+	 */
 	private void drawBackground(Graphics g, int startx, int starty, int width, int height) {
 		int endx = startx + (8*width);
 		int endy = starty + (8*height);
@@ -202,13 +250,21 @@ public class BoardCanvas extends Canvas {
 			}
 			flag = !flag;
 		}
-	}	
-	
+	}
+
+	/**
+	 * repaint board after forward move
+	 * @param amount - amount of move
+	 */
 	public void fwd(int amount) {
 		index = Math.min(boards.size()-1,index + amount);
 		repaint();		
 	}
-	
+
+	/**
+	 * repaint board after backward move
+	 * @param amount - amount of move
+	 */
 	public void bwd(int amount) {
 		index = Math.max(0,index - amount);
 		repaint();		
