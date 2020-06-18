@@ -63,7 +63,7 @@ public class Castling implements MultiPieceMove {
                     && board.clearRowExcept(kpos, rpos, king, rook)
                     && ((King) king).isCastleable()
                     && ((Rook) rook).isCastleable()
-                    && board.safeRowExcept(kpos, rpos, isWhite, king, rook);
+                    && board.safeCastling(kpos, rpos, isWhite);
         else return false;
     }
 

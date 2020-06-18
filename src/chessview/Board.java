@@ -3,6 +3,8 @@ package chessview;
 import chessview.moves.Move;
 import chessview.pieces.*;
 
+import java.nio.file.StandardWatchEventKinds;
+
 /**
  * <h1>Class Board</h1>
  * This class is used to create a chess board
@@ -302,12 +304,14 @@ public class Board {
 		return true;
 	}
 
-	public boolean safeRowExcept(Position startPosition,
-								  Position endPosition, boolean isWhite, Piece... exceptions) {
-		int minCol = Math.min(startPosition.column(), endPosition.column());
-		int maxCol = Math.max(startPosition.column(), endPosition.column());
-		int minRow = Math.min(startPosition.row(), endPosition.row());
-		int maxRow = Math.max(startPosition.row(), endPosition.row());
+	public boolean safeCastling(Position kingPosition,
+								  Position rookPosition, boolean isWhite) {
+		Position takenPos;
+		int dir = kingPosition.column() - rookPosition.column() > 0 ? -1 : 1;
+		int minCol = Math.min(kingPosition.column(), rookPosition.column());
+		int maxCol = Math.max(kingPosition.column(), rookPosition.column());
+		int minRow = Math.min(kingPosition.row(), rookPosition.row());
+		int maxRow = Math.max(kingPosition.row(), rookPosition.row());
 		int diffCol = maxCol - minCol;
 		int diffRow = maxRow - minRow;
 
@@ -319,9 +323,14 @@ public class Board {
 			for (int c = 1; c <= 8; ++c) {
 				Position pos = new Position(r, c);
 				Piece p = pieceAt(pos);
-				if (p != null && p.isWhite() != isWhite
-						&& p.isValidMove(pos, startPosition, p, this)) {
-					return false;
+				if (p != null && p.isWhite() != isWhite){
+					for(int i = 0; i < 2; i++){
+						takenPos = new Position(kingPosition.row(), (kingPosition.column() + dir * i));
+						Piece takenP = pieceAt(takenPos);
+						if(p.isValidMove(pos, takenPos, takenP, this)){
+							return false;
+						}
+					}
 				}
 			}
 		}

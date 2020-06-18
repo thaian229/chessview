@@ -1,3 +1,7 @@
-e2-e4 d7-d5
-Qd1-e2 d5xe4
-
+Nb1-a3 a7-a6
+d2-d3 d7-d6
+Bc1-h6 e7-e6
+Qd1-d2 f7-f5
+e2-e4 Qd8-g5
+b2-b3 Qg5-g4
+O-O-O
