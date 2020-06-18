@@ -70,7 +70,7 @@ public class Board {
 	 */
 	public boolean apply(Move move) {		
 		boolean isWhite = move.isWhite();
-		
+
 		if(move.isValid(this)) {						
 			move.apply(this);
 			boolean whiteNowInCheck = isInCheck(true);
@@ -155,7 +155,8 @@ public class Board {
 		Position kingPos = null;
 
 		// First, find my king
-		outer: for (int row = 1; row <= 8; ++row) {
+		outer:
+		for (int row = 1; row <= 8; ++row) {
 			for (int col = 1; col <= 8; ++col) {
 				Position pos = new Position(row, col);
 				Piece p = pieceAt(pos);
@@ -298,6 +299,33 @@ public class Board {
 			col++; 
 		}
 		
+		return true;
+	}
+
+	public boolean safeRowExcept(Position startPosition,
+								  Position endPosition, boolean isWhite, Piece... exceptions) {
+		int minCol = Math.min(startPosition.column(), endPosition.column());
+		int maxCol = Math.max(startPosition.column(), endPosition.column());
+		int minRow = Math.min(startPosition.row(), endPosition.row());
+		int maxRow = Math.max(startPosition.row(), endPosition.row());
+		int diffCol = maxCol - minCol;
+		int diffRow = maxRow - minRow;
+
+		if(diffRow != 0 || diffCol == 0) {
+			return false;
+		}
+
+		for (int r = 1; r <= 8; ++r) {
+			for (int c = 1; c <= 8; ++c) {
+				Position pos = new Position(r, c);
+				Piece p = pieceAt(pos);
+				if (p != null && p.isWhite() != isWhite
+						&& p.isValidMove(pos, startPosition, p, this)) {
+					return false;
+				}
+			}
+		}
+
 		return true;
 	}
 

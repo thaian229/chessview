@@ -45,7 +45,7 @@ public final class Position {
 	 * @return row XOR col
 	 */
 	public int hashCode() {
-		return row ^ col;
+			return row ^ col;
 	}
 
 	/**

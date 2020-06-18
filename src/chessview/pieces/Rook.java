@@ -7,21 +7,30 @@ import chessview.*;
  * This class represents the piece rook in the chess board
  */
 public class Rook extends PieceImpl implements Piece {
+	public boolean isCastleable = true;
+
 	public Rook(boolean isWhite) {
 		super(isWhite);
+	}
+
+	public boolean isCastleable() {
+		return isCastleable;
 	}
 
 	public boolean isValidMove(Position oldPosition, Position newPosition,
 			Piece isTaken, Board board) {
 		Piece p = board.pieceAt(oldPosition);
 		Piece t = board.pieceAt(newPosition);
-		
-		return this.equals(p)
+
+		if (this.equals(p)
 				&& (t == isTaken || (isTaken != null && isTaken.equals(t)))
 				&& (board.clearColumnExcept(oldPosition, newPosition, p, t) || board
-						.clearRowExcept(oldPosition, newPosition, p, t));
+				.clearRowExcept(oldPosition, newPosition, p, t))) {
+			this.isCastleable = false;
+			return true;
+		}
+		return false;
 	}
-
 	/**
 	 * This method represents rook piece as a character "R" or "r" depends on color of piece
 	 * @return "R" for white rook, "r" for black one
