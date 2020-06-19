@@ -304,6 +304,13 @@ public class Board {
 		return true;
 	}
 
+	/**
+	 * This method checks whether the given row is completely safe for castling.
+	 * @param kingPosition - king position
+	 * @param rookPosition - rook position
+	 * @param isWhite - check color of piece
+	 * @return true if safe, otherwise false
+	 */
 	public boolean safeCastling(Position kingPosition,
 								  Position rookPosition, boolean isWhite) {
 		Position takenPos;

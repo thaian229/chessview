@@ -47,7 +47,7 @@ public class RoundCanvas extends Canvas {
 			if((i*2)+1 >= boards.size() || boards.get(i*2) == null) {
 				g.setColor(Color.RED);
 			} else if((i*2) < index) {
-				g.setColor(Color.BLACK);
+				g.setColor(Color.GREEN);
 			} else {
 				g.setColor(Color.LIGHT_GRAY);
 			}
@@ -64,7 +64,7 @@ public class RoundCanvas extends Canvas {
 			if(((i*2)+2) >= boards.size()) {
 				g.setColor(Color.RED);
 			} else if(((i*2)+1) < index) {
-				g.setColor(Color.BLACK);
+				g.setColor(Color.GREEN);
 			} else {
 				g.setColor(Color.LIGHT_GRAY);
 			}

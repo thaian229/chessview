@@ -10,8 +10,8 @@
     <node x="186.0" y="505.0">chessview.pieces.PieceImpl</node>
     <node x="184.0" y="102.0">chessview.moves.MultiPieceMove</node>
     <node x="676.0" y="764.0">chessview.Round</node>
-    <node x="532.0" y="667.0">chessview.pieces.Queen</node>
     <node x="665.0" y="505.0">chessview.viewer.RoundCanvas</node>
+    <node x="532.0" y="667.0">chessview.pieces.Queen</node>
     <node x="0.0" y="861.0">chessview.Main</node>
     <node x="0.0" y="764.0">chessview.viewer.BoardCanvas</node>
     <node x="316.0" y="667.0">chessview.pieces.Knight</node>
@@ -77,15 +77,15 @@
       <point x="216.0" y="617.0" />
       <point x="-30.0" y="26.0" />
     </edge>
+    <edge source="chessview.moves.SinglePieceTake" target="chessview.moves.SinglePieceMove">
+      <point x="0.0" y="-26.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
     <edge source="chessview.pieces.Knight" target="chessview.pieces.PieceImpl">
       <point x="-24.0" y="-26.0" />
       <point x="340.0" y="617.0" />
       <point x="256.0" y="617.0" />
       <point x="10.0" y="26.0" />
-    </edge>
-    <edge source="chessview.moves.SinglePieceTake" target="chessview.moves.SinglePieceMove">
-      <point x="0.0" y="-26.0" />
-      <point x="0.0" y="26.0" />
     </edge>
     <edge source="chessview.moves.MultiPieceMove" target="chessview.moves.Move">
       <point x="-2.8421709430404007E-14" y="-26.0" />
@@ -113,13 +113,17 @@
       <point x="-20.0" y="-26.0" />
       <point x="-10.0" y="26.0" />
     </edge>
+    <edge source="chessview.moves.Check" target="chessview.moves.Move">
+      <point x="0.0" y="-26.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
     <edge source="chessview.pieces.King" target="chessview.pieces.PieceImpl">
       <point x="-20.0" y="-26.0" />
       <point x="20.0" y="607.0" />
       <point x="196.0" y="607.0" />
       <point x="-50.0" y="26.0" />
     </edge>
-    <edge source="chessview.moves.Check" target="chessview.moves.Move">
+    <edge source="chessview.moves.EnPassant" target="chessview.moves.SinglePieceTake">
       <point x="0.0" y="-26.0" />
       <point x="0.0" y="26.0" />
     </edge>
@@ -129,10 +133,6 @@
       <point x="434.6666666666667" y="77.0" />
       <point x="26.666666666666686" y="26.0" />
     </edge>
-    <edge source="chessview.moves.EnPassant" target="chessview.moves.SinglePieceTake">
-      <point x="0.0" y="-26.0" />
-      <point x="0.0" y="26.0" />
-    </edge>
     <edge source="chessview.pieces.Queen" target="chessview.pieces.PieceImpl">
       <point x="-22.0" y="-26.0" />
       <point x="554.0" y="587.0" />
@@ -140,7 +140,7 @@
       <point x="50.0" y="26.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="0.4340836012861736" x="448.5" y="456.5" />
+  <settings layout="Hierarchic Group" zoom="0.6299126637554585" x="452.5" y="448.0" />
   <SelectedNodes>
     <node>chessview.pieces.PieceImpl</node>
   </SelectedNodes>

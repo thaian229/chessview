@@ -68,7 +68,9 @@ public class CastleTests extends TestCase {
 			"d2-d4 a7-a6\nQd1-d3 b7-b6\nNb1-a3 d7-d6\nO-O-O",
 			"a2-a3 d7-d5\nb2-b3 Qd8-d6\nc2-c3 Bc8-e6\ne2-e3 O-O-O",
 			"e2-e4 e7-e6\nNg1-f3 d7-d6\nBf1-c4 f7-f6\nKe1-f1 g7-g6\nKf1-e1 h7-h6\nO-O", // tricksy
-			"d2-d4 a7-a6\nQd1-d3 b7-b6\nBc1-e3 c7-c6\nNb1-a3 d7-d6\nKe1-d1 g7-g6\nKd1-e1 h7-h6\nO-O-O"
+			"d2-d4 a7-a6\nQd1-d3 b7-b6\nBc1-e3 c7-c6\nNb1-a3 d7-d6\nKe1-d1 g7-g6\nKd1-e1 h7-h6\nO-O-O",
+			"Nb1-a3 a7-a6\nd2-d3 d7-d6\nBc1-h6 e7-e6\nQd1-d2 f7-f5\ne2-e4 Qd8-g5\nb2-b3 Qg5-g4\nO-O-O",
+			"Nb1-a3 a7-a6\nd2-d3 d7-d6\nBc1-h6 e7-e6\nQd1-d2 f7-f5\ne2-e4 Qd8-g5\nf2-f3 Qg5-h4+\nO-O-O"
 		};
 		
 		checkInvalidTests(tests);
