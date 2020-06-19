@@ -7,7 +7,7 @@ import chessview.*;
  * This class represents the piece King in chess board
  */
 public class King extends PieceImpl implements Piece {
-	public boolean isCastleable = true;
+	private boolean isCastleable = true;
 
 	/**
 	 * Construct King

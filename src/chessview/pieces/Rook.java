@@ -7,7 +7,7 @@ import chessview.*;
  * This class represents the piece rook in the chess board
  */
 public class Rook extends PieceImpl implements Piece {
-	public boolean isCastleable = true;
+	private boolean isCastleable = true;
 
 	public Rook(boolean isWhite) {
 		super(isWhite);

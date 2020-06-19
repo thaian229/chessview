@@ -17,7 +17,7 @@ public class PawnPromotion implements MultiPieceMove {
 	 * @param move - a SinglePieceMove
 	 * @param promotion - piece promotion
 	 */
-	public PawnPromotion(SinglePieceMove move, Piece promotion) {		
+	public PawnPromotion(SinglePieceMove move, Piece promotion) {
 		this.promotion = promotion;
 		this.move = move;
 	}
@@ -32,7 +32,8 @@ public class PawnPromotion implements MultiPieceMove {
 	 */
 	public boolean isValid(Board board) {				
 		int row = isWhite() ? 8 : 1;		
-		return move.isValid(board) && move.piece() instanceof Pawn
+		return move.isValid(board)
+				&& move.piece() instanceof Pawn
 				&& move.newPosition.row() == row;
 	}
 
